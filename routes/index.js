@@ -22,7 +22,7 @@ router.get('/payment', (request, response) => {
 router.get('/contact', (request, response) => {
     response.render('pages/contact');
 })
-router.get('/login', (request, response) => {
+router.get('/signin', (request, response) => {
     response.render('pages/login');
 })
 router.get('/signup', (request, response) => {

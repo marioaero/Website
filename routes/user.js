@@ -3,14 +3,14 @@ const product = require('../models/product');
 const User = require('../models/user')
 const router = express.Router();
 
-router.get('login', async (request, response) => {
-    response.render('pages/login')
+router.get('signin', async (request, response) => {
+    response.render('pages/signin')
 })
 router.get('/logout', (request, response) => {
     request.session.isLoggedIn = false;
     response.redirect('/')
 })
-router.post('/login', async(request, response) => {
+router.post('/signin', async(request, response) => {
     const Name = request.body.Name;
     const Email = request.body.Email;
     const Telephone = request.body.Telephone;
@@ -19,10 +19,10 @@ router.post('/login', async(request, response) => {
     data = await User.find();
     await data.forEach((account) => {
         if (Email != account.email ){
-            response.render('pages/login', { error: 'Email Salah!'})
+            response.render('pages/signin', { error: 'Email Salah!'})
         }
         if (Password != account.password ){
-            response.render('pages/login', { error: 'Password Salah'})
+            response.render('pages/signin', { error: 'Password Salah'})
         }
         if(account.name == "admin" && account.email == "admin@admin.com"){
             response.redirect('/Dashboard');

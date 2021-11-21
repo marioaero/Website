@@ -38,13 +38,9 @@ const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 const { request, response } = require('express');
 const port = process.env.PORT || 3000
-const http = require('http');
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-});
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 //port 
-server.listen(port, ()=> {
-    console.log('server sudah berjalan di port 3000')
+app.listen(port, ()=> {
+    console.log('server sudah berjalan ')
 })
