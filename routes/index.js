@@ -23,7 +23,7 @@ router.get('/contact', (request, response) => {
     response.render('pages/contact');
 })
 router.get('/signin', (request, response) => {
-    response.render('pages/login');
+    response.render('pages/signin');
 })
 router.get('/signup', (request, response) => {
     response.render('pages/signup');
