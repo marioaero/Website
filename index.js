@@ -4,6 +4,7 @@ const session = require('express-session')
 const mongoose = require('mongoose')
 const app = express()
 
+
 app.use('/public',express.static('public'));
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: false}))
@@ -36,11 +37,14 @@ mongoose.connect(('mongodb+srv://marioaero:marioaero@cluster1.hba20.mongodb.net/
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 const { request, response } = require('express');
-
-
+const port = process.env.PORT || 3000
+const http = require('http');
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+});
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 //port 
-app.listen('3000', ()=> {
+server.listen(port, ()=> {
     console.log('server sudah berjalan di port 3000')
 })
